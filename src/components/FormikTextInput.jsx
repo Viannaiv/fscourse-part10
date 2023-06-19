@@ -3,11 +3,17 @@ import { useField } from 'formik'
 
 import TextInput from './TextInput'
 import Text from './Text'
+import FlexContainer from './FlexContainer'
+import theme from '../theme'
 
 const styles = StyleSheet.create({
   errorText: {
     marginTop: 5,
+		color: theme.colors.error,
   },
+	inputContainer: {
+		marginBottom: 10
+	}
 })
 
 const FormikTextInput = ({ name, ...props }) => {
@@ -15,7 +21,7 @@ const FormikTextInput = ({ name, ...props }) => {
   const showError = meta.touched && meta.error
 
   return (
-    <>
+    <FlexContainer style={styles.inputContainer}>
       <TextInput
         onChangeText={value => helpers.setValue(value)}
         onBlur={() => helpers.setTouched(true)}
@@ -24,7 +30,7 @@ const FormikTextInput = ({ name, ...props }) => {
         {...props}
       />
       {showError && <Text style={styles.errorText}>{meta.error}</Text>}
-    </>
+    </FlexContainer>
   )
 }
 

@@ -7,13 +7,16 @@ const styles = StyleSheet.create({
 		borderColor: theme.colors.grey,
 		borderRadius: 4,
 		padding: 10,
-		marginBottom: 10
+	},
+	onError: {
+		borderColor: theme.colors.error,
 	}
 })
 
 const TextInput = ({ style, error, ...props }) => {
   const textInputStyle = [
 		styles.input,
+		error && styles.onError,
 		style
 	]
 
