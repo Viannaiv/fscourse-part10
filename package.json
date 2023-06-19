@@ -27,6 +27,6 @@
   },
   "overrides": {
     "react-devtools-core": "~4.25.0"
- },
+  },
   "private": true
 }
