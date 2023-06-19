@@ -5,7 +5,8 @@ const theme = {
     primary: '#0366d6',
     light: 'white',
     appBar: '#24292e',
-    mainBackground: '#e1e4e8'
+    mainBackground: '#e1e4e8',
+    grey: '#A9A9A9'
   },
   fontSizes: {
     body: 14,

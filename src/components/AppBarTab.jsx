@@ -1,4 +1,3 @@
-import { Pressable } from 'react-native'
 import { StyleSheet } from 'react-native'
 import { Link } from "react-router-native"
 import Text from './Text'
@@ -16,7 +15,6 @@ const AppBarTab = ({ content, path }) => (
       <Text color='light' fontWeight='bold'>{content}</Text>
     </Link>
   </FlexContainer>
-
 )
 
 export default AppBarTab
