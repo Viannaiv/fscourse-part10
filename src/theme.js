@@ -1,11 +1,11 @@
-import Constants from 'expo-constants'
-
 const theme = {
   colors: {
     textPrimary: '#24292e',
     textSecondary: '#586069',
     primary: '#0366d6',
-    appBarText: '#f2f2f2'
+    light: 'white',
+    appBar: '#24292e',
+    mainBackground: '#e1e4e8'
   },
   fontSizes: {
     body: 14,
@@ -20,22 +20,6 @@ const theme = {
   },
   separator: {
     height: 10
-  },
-  containers: {
-    container: {
-      flexGrow: 1,
-      flexShrink: 1
-    },
-    appBarContainer: {
-      paddingTop: Constants.statusBarHeight + 20,
-      paddingLeft: 15,
-      paddingRight: 15,
-      paddingBottom: 20,
-      flexDirection: 'row',
-      flexWrap: 'wrap',
-      flexGrow: 0,
-      backgroundColor: '#24292e'
-    }
   }
 }
 

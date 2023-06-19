@@ -1,14 +1,13 @@
 import { View, StyleSheet } from 'react-native'
-import theme from '../theme'
 
 const styles = StyleSheet.create({
-  ...theme.containers
+  container: {
+  }
 })
 
-const FlexContainer = ({containerType, style, ...props}) => {
+const FlexContainer = ({style, ...props}) => {
   const containerStyle = [
     styles.container,
-    containerType === 'appbar' && styles.appBarContainer,
     style
   ]
 

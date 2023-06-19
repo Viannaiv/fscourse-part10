@@ -3,7 +3,7 @@ import Text from './Text'
 
 const AppBarTab = ({ content }) => (
   <Pressable onPress={() => { } }>
-    <Text color='appBar' fontWeight='bold'>{content}</Text>
+    <Text color='light' fontWeight='bold'>{content}</Text>
   </Pressable>
 )
 
