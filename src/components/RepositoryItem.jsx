@@ -22,20 +22,21 @@ const styles = StyleSheet.create({
 		flexShrink: 1
 	},
 	itemDescrptionContainer: {
-		flexDirection: 'row',
+		flexDirection: 'row'
 	},
 	itemInfoContainer: {
 		flexDirection: 'row',
-		paddingTop: 10,
+		paddingTop: 10
 	},
-	itemDescrption: {
+	itemDescription: {
 		paddingLeft: 20,
 		alignItems: 'flex-start',
-		flexShrink: 1
+		flexShrink: 1,
+		justifyContent: 'space-between'
 	},
 	itemInfo: {
 		alignItems: 'center',
-		flexGrow: 1,
+		flexGrow: 1
 	}
 })
 
@@ -61,8 +62,8 @@ const RepositoryItem = ({
     <FlexContainer style={styles.itemContainer}>
 			<FlexContainer style={styles.itemDescrptionContainer}>
 				<Image style={styles.image} source={{uri: ownerAvatarUrl}}/>
-				<FlexContainer style={styles.itemDescrption}>
-					<Text fontWeight={'bold'}>{fullName}</Text>
+				<FlexContainer style={styles.itemDescription}>
+					<Text fontWeight={'bold'} fontSize='subheading'>{fullName}</Text>
 					<SecondaryText>{description}</SecondaryText>
 					<FlexContainer style={styles.language}>
 						<Pressable onPress={()=>{}}>
