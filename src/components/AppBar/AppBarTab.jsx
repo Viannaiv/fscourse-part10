@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native'
 import { Link } from "react-router-native"
-import Text from './Text'
-import FlexContainer from './FlexContainer'
+import Text from '../Text'
+import FlexContainer from '../FlexContainer'
 
 const styles = StyleSheet.create({
   container: {

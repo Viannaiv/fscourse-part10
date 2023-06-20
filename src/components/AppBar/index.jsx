@@ -1,8 +1,8 @@
 import { StyleSheet, ScrollView } from 'react-native'
 import Constants from 'expo-constants'
 import AppBarTab from './AppBarTab'
-import FlexContainer from './FlexContainer'
-import theme from '../theme'
+import FlexContainer from '../FlexContainer'
+import theme from '../../theme'
 
 const styles = StyleSheet.create({
     appBarContainer: {

@@ -1,8 +1,8 @@
 import { StyleSheet, Image, Pressable } from 'react-native'
-import Text from './Text'
-import FlexContainer from './FlexContainer'
-import theme from '../theme'
-import SecondaryText from './SecondaryText'
+import Text from '../Text'
+import FlexContainer from '../FlexContainer'
+import theme from '../../theme'
+import SecondaryText from '../SecondaryText'
 
 const styles = StyleSheet.create({
   image: {
