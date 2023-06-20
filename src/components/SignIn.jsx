@@ -5,6 +5,7 @@ import Text from './Text'
 import FormikTextInput from './FormikTextInput'
 import FlexContainer from './FlexContainer'
 import theme from '../theme'
+import useSignIn from '../hooks/useSignIn'
 
 const styles = StyleSheet.create({
 	form: {
@@ -38,10 +39,6 @@ const SignInForm = ({ onSubmit }) => {
   )
 }
 
-const onSubmit = (values) => {
-	console.log(values)
-}
-
 const validationSchema = yup.object().shape({
   username: yup
 		.string()
@@ -51,14 +48,29 @@ const validationSchema = yup.object().shape({
     .required('Password is required'),
 })
 
-const SignIn = () => (
-	<Formik
-		initialValues={initialValues}
-		onSubmit={onSubmit}
-		validationSchema={validationSchema}
-	>
-		{({ handleSubmit }) => <SignInForm onSubmit={handleSubmit} />}
-	</Formik>
-)
+const SignIn = () => {
+	const [signIn] = useSignIn();
+
+	const onSubmit = async (values) => {
+		const { username, password } = values;
+
+		try {
+			const { data } = await signIn({ username, password })
+			console.log(data)
+		} catch (error) {
+			console.log(error)
+		}
+	}
+
+	return (
+		<Formik
+			initialValues={initialValues}
+			onSubmit={onSubmit}
+			validationSchema={validationSchema}
+		>
+			{({ handleSubmit }) => <SignInForm onSubmit={handleSubmit} />}
+		</Formik>
+	)
+}
 
 export default SignIn
