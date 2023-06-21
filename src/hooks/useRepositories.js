@@ -13,7 +13,7 @@ const useRepositories = () => {
     console.log('Repositories retrieved')
   }
 
-  return { repositories: data.repositories, loading, refetch }
+  return { repositories: data.repositories, error, loading, refetch }
 }
 
 export default useRepositories

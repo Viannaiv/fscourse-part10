@@ -9,9 +9,9 @@ const styles = StyleSheet.create({
   }
 })
 
-const AppBarTab = ({ content, path }) => (
+const AppBarTab = ({ content, path, onPress }) => (
   <FlexContainer style={styles.container}>
-    <Link to={path}>
+    <Link to={path} onPress={onPress}>
       <Text color='light' fontWeight='bold'>{content}</Text>
     </Link>
   </FlexContainer>

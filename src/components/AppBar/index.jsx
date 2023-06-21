@@ -3,6 +3,10 @@ import Constants from 'expo-constants'
 import AppBarTab from './AppBarTab'
 import FlexContainer from '../FlexContainer'
 import theme from '../../theme'
+import useUser from '../../hooks/useUser'
+
+import { useApolloClient } from '@apollo/client'
+import { useAuthStorage } from '../../hooks/useAuthStorage'
 
 const styles = StyleSheet.create({
     appBarContainer: {
@@ -16,13 +20,37 @@ const styles = StyleSheet.create({
   }
 )
 
-const AppBar = () => (
-  <FlexContainer style={styles.appBarContainer}>
-    <ScrollView horizontal>
-      <AppBarTab content='Repositories' path='/' />
-      <AppBarTab content='Sign in' path='/signin' />
-    </ScrollView>
-  </FlexContainer>
-)
+const AppBar = () => {
+  const { user } = useUser()
+  const authStorage = useAuthStorage()
+  const apolloClient = useApolloClient()
+  console.log('Current user', user)
+
+  const signOut = async () => {
+    console.log('Signing out')
+    await authStorage.removeAccessToken()
+    apolloClient.resetStore()
+  }
+
+  if (!user) {
+    return (
+      <FlexContainer style={styles.appBarContainer}>
+        <ScrollView horizontal>
+          <AppBarTab content='Repositories' path='/' />
+          <AppBarTab content='Sign in' path='/signin' />
+        </ScrollView>
+      </FlexContainer>
+    )
+  }
+  
+  return (
+    <FlexContainer style={styles.appBarContainer}>
+      <ScrollView horizontal>
+        <AppBarTab content='Repositories' path='/' />
+        <AppBarTab content='Sign out' path='#' onPress={signOut}/>
+      </ScrollView>
+    </FlexContainer>
+  )
+}
 
 export default AppBar
