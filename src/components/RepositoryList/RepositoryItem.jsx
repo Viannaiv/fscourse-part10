@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
 	}
 })
 
-const convertCount = (count) => (count/1000).toFixed(1) + 'k'
+const convertCount = (count) => `${(count/1000).toFixed(1)}k`
 
 const ItemInfo = ({title, description}) => (
 	<FlexContainer style={styles.itemInfo}>

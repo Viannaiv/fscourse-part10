@@ -6,9 +6,12 @@ const useRepositories = () => {
     fetchPolicy: 'cache-and-network'
   })
 
-  console.log('GET_REPOSITORIES query status: ', {data, error, loading})
-
-  if (loading) return {data: null, loading, refetch}
+  if (loading) {
+    console.log('Retrieving repositories')
+    return {data: null, loading, refetch}
+  } else if (data) {
+    console.log('Repositories retrieved')
+  }
 
   return { repositories: data.repositories, loading, refetch }
 }
