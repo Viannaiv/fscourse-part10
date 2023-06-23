@@ -31,23 +31,15 @@ const AppBar = () => {
     await authStorage.removeAccessToken()
     apolloClient.resetStore()
   }
-
-  if (!user) {
-    return (
-      <FlexContainer style={styles.appBarContainer}>
-        <ScrollView horizontal>
-          <AppBarTab content='Repositories' path='/' />
-          <AppBarTab content='Sign in' path='/signin' />
-        </ScrollView>
-      </FlexContainer>
-    )
-  }
   
   return (
     <FlexContainer style={styles.appBarContainer}>
       <ScrollView horizontal>
         <AppBarTab content='Repositories' path='/' />
-        <AppBarTab content='Sign out' path='#' onPress={signOut}/>
+        {user 
+          ? <AppBarTab content='Sign out' path='#' onPress={signOut}/>
+          : <AppBarTab content='Sign in' path='/signin' />
+        }
       </ScrollView>
     </FlexContainer>
   )

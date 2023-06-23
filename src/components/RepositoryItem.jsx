@@ -1,8 +1,9 @@
 import { StyleSheet, Image, Pressable } from 'react-native'
-import Text from '../Text'
-import FlexContainer from '../FlexContainer'
-import theme from '../../theme'
-import SecondaryText from '../SecondaryText'
+import * as Linking from 'expo-linking'
+import Text from './Text'
+import FlexContainer from './FlexContainer'
+import theme from '../theme'
+import SecondaryText from './SecondaryText'
 
 const styles = StyleSheet.create({
   image: {
@@ -18,8 +19,6 @@ const styles = StyleSheet.create({
 	itemContainer: {
 		backgroundColor: theme.colors.light,
 		padding: 15,
-		flexGrow: 1,
-		flexShrink: 1
 	},
 	itemDescrptionContainer: {
 		flexDirection: 'row'
@@ -37,6 +36,13 @@ const styles = StyleSheet.create({
 	itemInfo: {
 		alignItems: 'center',
 		flexGrow: 1
+	},
+	openGitHub: {
+		backgroundColor: theme.colors.primary,
+		borderRadius: 4,
+		padding: 10,
+		marginTop: 10,
+		alignItems: 'center'
 	}
 })
 
@@ -53,35 +59,44 @@ const ItemInfo = ({title, description}) => (
 )
   
 const RepositoryItem = ({
-    fullName,
-    description,
-    language,
-    stargazersCount,
-    forksCount,
-    reviewCount,
-    ratingAverage,
-    ownerAvatarUrl
-}) => (
-    <FlexContainer style={styles.itemContainer} testID='repositoryItem'>
+	fullName,
+	description,
+	language,
+	stargazersCount,
+	forksCount,
+	reviewCount,
+	ratingAverage,
+	ownerAvatarUrl,
+	url,
+	showOpenButton
+}) => {
+	return (
+		<FlexContainer style={styles.itemContainer} testID='repositoryItem'>
 			<FlexContainer style={styles.itemDescrptionContainer}>
-				<Image style={styles.image} source={{uri: ownerAvatarUrl}}/>
+				<Image style={styles.image} source={{ uri: ownerAvatarUrl }} />
 				<FlexContainer style={styles.itemDescription}>
 					<Text fontWeight={'bold'} fontSize='subheading'>{fullName}</Text>
 					<SecondaryText>{description}</SecondaryText>
 					<FlexContainer style={styles.language}>
-						<Pressable onPress={()=>{}}>
 							<Text color='light'>{language}</Text>
-						</Pressable>
 					</FlexContainer>
 				</FlexContainer>
 			</FlexContainer>
 			<FlexContainer style={styles.itemInfoContainer}>
-				<ItemInfo title={'Stars'} description={convertCount(stargazersCount)}/>
-				<ItemInfo title={'Forks'} description={convertCount(forksCount)}/>
-				<ItemInfo title={'Reviews'} description={convertCount(reviewCount)}/>
-				<ItemInfo title={'Rating'} description={ratingAverage}/>
+				<ItemInfo title={'Stars'} description={convertCount(stargazersCount)} />
+				<ItemInfo title={'Forks'} description={convertCount(forksCount)} />
+				<ItemInfo title={'Reviews'} description={convertCount(reviewCount)} />
+				<ItemInfo title={'Rating'} description={ratingAverage} />
 			</FlexContainer>
-    </FlexContainer>
-) 
+			{showOpenButton && 
+				<FlexContainer style={styles.openGitHub}>
+					<Pressable onPress={() => {url ? Linking.openURL(url) : console.log('No repository url provided')}}>
+						<Text color='light' fontWeight={'bold'}>Open in GitHub</Text>
+					</Pressable>
+				</FlexContainer>
+			}
+		</FlexContainer>
+	)
+} 
 
 export default RepositoryItem

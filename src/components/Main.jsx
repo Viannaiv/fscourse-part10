@@ -5,6 +5,7 @@ import AppBar from './AppBar'
 import FlexContainer from './FlexContainer'
 import SignIn from './SignIn'
 import theme from '../theme'
+import Repository from './Repository'
 
 const styles = StyleSheet.create({
   container: {
@@ -19,6 +20,7 @@ const Main = () => (
         <AppBar />
         <Routes>
           <Route path="/" element={<RepositoryList />} exact />
+          <Route path="/:repositoryId" element={<Repository />} />
           <Route path="/signin" element={<SignIn />} exact />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

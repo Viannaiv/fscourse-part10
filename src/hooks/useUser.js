@@ -12,7 +12,7 @@ const useUser = () => {
   } else if (data.me) {
     console.log('User information retrieved')
   } else if (error) {
-    console.log('Error in retrieving data: ', error)
+    console.log('Error in retrieving user information: ', error)
   } else {
     console.log('No signed in user')
   }
