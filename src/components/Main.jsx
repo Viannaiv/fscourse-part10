@@ -6,6 +6,7 @@ import FlexContainer from './FlexContainer'
 import SignIn from './SignIn'
 import theme from '../theme'
 import Repository from './Repository'
+import NewReview from './NewReview'
 
 const styles = StyleSheet.create({
   container: {
@@ -22,6 +23,7 @@ const Main = () => (
           <Route path="/" element={<RepositoryList />} exact />
           <Route path="/:repositoryId" element={<Repository />} />
           <Route path="/signin" element={<SignIn />} exact />
+          <Route path="/review" element={<NewReview />} exact />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
     </FlexContainer>
