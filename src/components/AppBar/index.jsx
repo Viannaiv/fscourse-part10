@@ -41,6 +41,7 @@ const AppBar = () => {
           ? <AppBarTab content='Sign out' path='#' onPress={signOut}/>
           : <AppBarTab content='Sign in' path='/signin' />
         }
+        {!user && <AppBarTab content='Sign up' path="/signup" />}
       </ScrollView>
     </FlexContainer>
   )
