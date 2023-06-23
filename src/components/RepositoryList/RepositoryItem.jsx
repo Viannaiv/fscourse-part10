@@ -40,7 +40,10 @@ const styles = StyleSheet.create({
 	}
 })
 
-const convertCount = (count) => `${(count/1000).toFixed(1)}k`
+const convertCount = (count) => {
+	if (count >= 1000) return `${(count / 1000).toFixed(1)}k`
+	return count
+}
 
 const ItemInfo = ({title, description}) => (
 	<FlexContainer style={styles.itemInfo}>
@@ -59,7 +62,7 @@ const RepositoryItem = ({
     ratingAverage,
     ownerAvatarUrl
 }) => (
-    <FlexContainer style={styles.itemContainer}>
+    <FlexContainer style={styles.itemContainer} testID='repositoryItem'>
 			<FlexContainer style={styles.itemDescrptionContainer}>
 				<Image style={styles.image} source={{uri: ownerAvatarUrl}}/>
 				<FlexContainer style={styles.itemDescription}>
@@ -75,7 +78,7 @@ const RepositoryItem = ({
 			<FlexContainer style={styles.itemInfoContainer}>
 				<ItemInfo title={'Stars'} description={convertCount(stargazersCount)}/>
 				<ItemInfo title={'Forks'} description={convertCount(forksCount)}/>
-				<ItemInfo title={'Reviews'} description={reviewCount}/>
+				<ItemInfo title={'Reviews'} description={convertCount(reviewCount)}/>
 				<ItemInfo title={'Rating'} description={ratingAverage}/>
 			</FlexContainer>
     </FlexContainer>
