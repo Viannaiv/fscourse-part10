@@ -47,7 +47,12 @@ describe('RepositoryList', () => {
 				],
 			}
 
-			render(<RepositoryListContainer repositories={repositories}/>)
+			const state = {ordering: '', searchText: ''}
+			const stateChanger = {ordering: () => {}, searchText: () => {}}
+
+			render(
+				<RepositoryListContainer repositories={repositories} state={state} stateChanger={stateChanger}/>
+			)
 
 			const repositoryItems = screen.getAllByTestId('repositoryItem')
 			const [firstRepositoryItem, secondRepositoryItem] = repositoryItems
